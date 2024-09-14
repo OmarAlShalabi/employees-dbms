@@ -3,7 +3,6 @@ package com.cercli.employees.dbms.application.usecase;
 import com.cercli.employees.dbms.application.usecase.dto.CreateNewEmployeeCommand;
 import com.cercli.employees.dbms.application.usecase.dto.UpdateEmployeeCommand;
 import com.cercli.employees.dbms.domain.entity.Employee;
-import com.cercli.employees.dbms.domain.entity.Result;
 import org.springframework.lang.NonNull;
 
 import java.util.List;
@@ -17,7 +16,7 @@ public interface EmployeeUseCase {
 
     List<Employee> getAllEmployees();
 
-    Result<Employee> createNewEmployee(final @NonNull CreateNewEmployeeCommand cmd);
+    Employee createNewEmployee(final @NonNull CreateNewEmployeeCommand cmd);
 
-    Result<Employee> updateEmployeeById(final @NonNull UpdateEmployeeCommand cmd);
+    Employee updateEmployeeById(final @NonNull UpdateEmployeeCommand cmd);
 }
