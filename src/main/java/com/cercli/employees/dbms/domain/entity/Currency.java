@@ -4,7 +4,7 @@ import lombok.Getter;
 import org.springframework.lang.NonNull;
 
 @Getter
-public class Currency {
+public class Currency implements DomainEntity{
 
     private final String code;
     private final String Name;

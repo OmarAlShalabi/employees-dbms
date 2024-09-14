@@ -1,0 +1,6 @@
+specs:
+  currency:
+    supported-currencies:
+      - USD
+  employee:
+    max-full-name-length: 200
