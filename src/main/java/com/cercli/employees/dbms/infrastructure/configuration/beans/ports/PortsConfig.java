@@ -1,7 +1,7 @@
 package com.cercli.employees.dbms.infrastructure.configuration.beans.ports;
 
 import com.cercli.employees.dbms.application.port.input.EmployeeInputPort;
-import com.cercli.employees.dbms.application.port.output.EmployeeOutputPort;
+import com.cercli.employees.dbms.infrastructure.configuration.beans.adapters.AdaptersConfig;
 import com.cercli.employees.dbms.infrastructure.configuration.beans.specifications.SpecificationsConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -10,10 +10,11 @@ import org.springframework.context.annotation.Import;
 import org.springframework.lang.NonNull;
 
 @Configuration
-@Import({SpecificationsConfig.class})
+@Import({SpecificationsConfig.class, AdaptersConfig.class})
 public class PortsConfig {
 
     private final SpecificationsConfig specificationsConfig;
+    private final AdaptersConfig adaptersConfig;
 
     @Value("${server.time-zone}")
     private String serverTimeZone;
@@ -21,18 +22,16 @@ public class PortsConfig {
     @Value("${server.is-debug}")
     private boolean isDebug;
 
-    public PortsConfig(final @NonNull SpecificationsConfig specificationsConfig) {
+    public PortsConfig(final @NonNull SpecificationsConfig specificationsConfig,
+                       final @NonNull AdaptersConfig adaptersConfig) {
         this.specificationsConfig = specificationsConfig;
-    }
-
-    @Bean
-    public EmployeeOutputPort employeeOutputPort() {
-        return new EmployeeOutputPort();
+        this.adaptersConfig = adaptersConfig;
     }
 
     @Bean
     public EmployeeInputPort employeeInputPort() {
-        return new EmployeeInputPort(employeeOutputPort(), specificationsConfig.createNewEmployeeSpecificaions(),
+        return new EmployeeInputPort(adaptersConfig.postgresEmployeesAdapter(),
+                specificationsConfig.createNewEmployeeSpecificaions(),
                 specificationsConfig.updateEmployeeSpecificaions(), serverTimeZone, isDebug);
     }
 }

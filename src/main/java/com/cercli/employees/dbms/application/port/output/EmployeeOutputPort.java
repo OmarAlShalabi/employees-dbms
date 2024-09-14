@@ -9,21 +9,13 @@ import java.util.Optional;
 /**
  * Class that defines the methods that will use employee data with external sources (API, DB, etc.)
  */
-public class EmployeeOutputPort {
+public interface EmployeeOutputPort {
 
-    public Optional<Employee> fetchEmployeeById(final @NonNull String empId) {
-        return null;
-    }
+    public Optional<Employee> fetchEmployeeById(final @NonNull String empId);
 
-    public List<Employee> fetchAllEmployees() {
-        return null;
-    }
+    public List<Employee> fetchAllEmployees();
 
-    public Employee persistEmployee(final @NonNull Employee emp) {
-        return null;
-    }
+    public Employee persistEmployee(final @NonNull Employee emp);
 
-    public boolean doesEmployeeExist(final @NonNull String empId) {
-        return false;
-    }
+    public boolean doesEmployeeExist(final @NonNull String empId);
 }

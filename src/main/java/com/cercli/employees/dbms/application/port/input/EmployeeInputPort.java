@@ -77,7 +77,7 @@ public class EmployeeInputPort implements EmployeeUseCase {
         }
         final Employee newEmp = new Employee(cmd.getEmployeeId(), cmd.getFullName(), cmd.getPosition(), cmd.getEmail(),
                 cmd.getCurrencyCode(), cmd.getSalary(), zoneId);
-        final Result<Employee> validatedNewEmp = createEmployeeSpec.isSatisfiedBy(newEmp);
+        final Result<Employee> validatedNewEmp = updateEmployeeSpec.isSatisfiedBy(newEmp);
         if (validatedNewEmp.isFailed()) {
             throw new EmployeeCreationException(validatedNewEmp.getErrorMessage());
         }
