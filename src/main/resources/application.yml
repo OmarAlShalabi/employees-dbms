@@ -1,0 +1,21 @@
+server:
+  port: 8082
+  shutdown: graceful
+
+spring:
+  application:
+    name: "employees.dbms"
+  datasource:
+    url: jdbc:postgresql://localhost:5432/cercli
+    username: root
+    password: root
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+  flyway:
+    url: jdbc:postgresql://localhost:5432/cercli
+    user: root
+    password: root
+    baseline-on-migrate: true
+    enabled: true
