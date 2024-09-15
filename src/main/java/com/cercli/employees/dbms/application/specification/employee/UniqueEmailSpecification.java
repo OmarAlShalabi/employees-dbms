@@ -6,8 +6,6 @@ import com.cercli.employees.dbms.application.specification.Specification;
 import com.cercli.employees.dbms.domain.entity.Employee;
 import org.springframework.lang.NonNull;
 
-import java.util.UUID;
-
 public class UniqueEmailSpecification implements Specification<Employee> {
 
     private final EmployeeOutputPort employeeOutputPort;
