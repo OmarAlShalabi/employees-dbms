@@ -1,4 +1,4 @@
-package com.cercli.employees.dbms.domain.specification;
+package com.cercli.employees.dbms.application.specification;
 
 import com.cercli.employees.dbms.domain.entity.DomainEntity;
 import lombok.Getter;

@@ -1,8 +1,8 @@
-package com.cercli.employees.dbms.domain.specification.employee;
+package com.cercli.employees.dbms.application.specification.employee;
 
 import com.cercli.employees.dbms.domain.entity.Employee;
-import com.cercli.employees.dbms.domain.specification.Result;
-import com.cercli.employees.dbms.domain.specification.Specification;
+import com.cercli.employees.dbms.application.specification.Result;
+import com.cercli.employees.dbms.application.specification.Specification;
 import org.springframework.lang.NonNull;
 
 public class FullNameLengthSpecification implements Specification<Employee> {

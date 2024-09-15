@@ -1,11 +1,11 @@
 package com.cercli.employees.dbms.infrastructure.configuration.beans.specifications;
 
 import com.cercli.employees.dbms.domain.entity.Employee;
-import com.cercli.employees.dbms.domain.specification.CompositeSpecification;
-import com.cercli.employees.dbms.domain.specification.Specification;
-import com.cercli.employees.dbms.domain.specification.employee.SupportedCurrencySpecification;
-import com.cercli.employees.dbms.domain.specification.employee.EmailFormatSpecification;
-import com.cercli.employees.dbms.domain.specification.employee.FullNameLengthSpecification;
+import com.cercli.employees.dbms.application.specification.CompositeSpecification;
+import com.cercli.employees.dbms.application.specification.Specification;
+import com.cercli.employees.dbms.application.specification.employee.SupportedCurrencySpecification;
+import com.cercli.employees.dbms.application.specification.employee.EmailFormatSpecification;
+import com.cercli.employees.dbms.application.specification.employee.FullNameLengthSpecification;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
