@@ -24,6 +24,19 @@ public class Employee implements DomainEntity {
 
     public Employee(final @NonNull String id, final @NonNull String fullName, final @NonNull String position,
                     final @NonNull String email, final @NonNull String currencyCode, final @NonNull BigDecimal salary,
+                    final @NonNull ZonedDateTime createdAt, final @NonNull ZonedDateTime modifiedAt) {
+        this.id = id;
+        this.fullName = fullName;
+        this.position = position;
+        this.email = email;
+        this.currencyCode = currencyCode;
+        this.salary = salary;
+        this.createdAt = createdAt;
+        this.modifiedAt = modifiedAt;
+    }
+
+    public Employee(final @NonNull String id, final @NonNull String fullName, final @NonNull String position,
+                    final @NonNull String email, final @NonNull String currencyCode, final @NonNull BigDecimal salary,
                     final @NonNull String zoneId) {
         this.id = id;
         this.fullName = fullName;
