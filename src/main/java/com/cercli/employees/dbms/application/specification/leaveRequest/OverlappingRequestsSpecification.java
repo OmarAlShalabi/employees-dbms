@@ -21,7 +21,8 @@ public class OverlappingRequestsSpecification implements BiFunction<LeaveRequest
     public Result<LeaveRequest> apply(final @NonNull LeaveRequest leaveRequest, final @NonNull List<LeaveRequest> overlappingRequests) {
         for (final LeaveRequest overlappingRequest : overlappingRequests) {
             if (!overlappingRequestTypes.containsKey(leaveRequest.getCategory())) {
-                return new Result<>(leaveRequest, true, "cannot overlap request of type (%s) with other types of leaves");
+                return new Result<>(leaveRequest, true, String.format("cannot overlap request of type (%s) with other types of leaves",
+                        leaveRequest.getCategory()));
             }
             if (!overlappingRequestTypes.get(leaveRequest.getCategory()).contains(overlappingRequest.getCategory())) {
                 return new Result<>(leaveRequest, true, String.format("cannot overlap request of type (%s) with already existing request with type (%s)",

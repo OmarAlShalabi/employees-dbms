@@ -6,9 +6,9 @@ specs:
     max-full-name-length: 200
   leave-request:
     supported-types:
-      - "Sick Leave"
-      - "Annual Leave"
-      - "Work Remotely"
+      - "SICK_LEAVE"
+      - "ANNUAL_LEAVE"
+      - "WORK_REMOTELY"
     overlapping-types:
-      "Work Remotely":
-        - "Annual Leave"
+      "WORK_REMOTELY":
+        - "ANNUAL_LEAVE"

@@ -22,6 +22,6 @@ CREATE TABLE IF NOT EXISTS time_off_request (
 INSERT INTO
     request_category (name)
 VALUES
-    ('Sick Leave'),
-    ('Work Remotely'),
-    ('Annual Leave');
+    ('SICK_LEAVE'),
+    ('WORK_REMOTELY'),
+    ('ANNUAL_LEAVE');
