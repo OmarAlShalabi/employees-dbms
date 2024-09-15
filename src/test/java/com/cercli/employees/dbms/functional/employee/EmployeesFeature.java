@@ -7,7 +7,7 @@ import org.junit.platform.suite.api.Suite;
 
 @Suite
 @IncludeEngines("cucumber")
-@SelectClasspathResource("features")
+@SelectClasspathResource("features/employee")
 @SelectPackages("com.cercli.employees.dbms.functional.employee")
-public class CreateEmployeeScenario {
+public class EmployeesFeature {
 }
