@@ -28,15 +28,16 @@ public class Employee implements DomainEntity {
     // the creation of createdAt, and modifiedAt fields to driver code we're using constructors.
     public Employee(final @NonNull String id, final @NonNull String fullName, final @NonNull String position,
                     final @NonNull String email, final @NonNull String currencyCode, final @NonNull BigDecimal salary,
-                    final @NonNull ZonedDateTime createdAt, final @NonNull ZonedDateTime modifiedAt) {
+                    final @NonNull ZonedDateTime createdAt, final @NonNull ZonedDateTime modifiedAt,
+                    final @NonNull String zoneId) {
         this.id = id;
         this.fullName = fullName;
         this.position = position;
         this.email = email;
         this.currencyCode = currencyCode;
         this.salary = salary;
-        this.createdAt = createdAt;
-        this.modifiedAt = modifiedAt;
+        this.createdAt = ZonedDateTime.of(createdAt.toLocalDateTime(), ZoneId.of(zoneId));
+        this.modifiedAt = ZonedDateTime.of(createdAt.toLocalDateTime(), ZoneId.of(zoneId));
     }
 
     public Employee(final @NonNull String id, final @NonNull String fullName, final @NonNull String position,

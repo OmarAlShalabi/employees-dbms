@@ -4,7 +4,6 @@ import com.cercli.employees.dbms.application.port.input.EmployeeInputPort;
 import com.cercli.employees.dbms.infrastructure.configuration.beans.adapters.AdaptersConfig;
 import com.cercli.employees.dbms.infrastructure.configuration.beans.server.ServerConfig;
 import com.cercli.employees.dbms.infrastructure.configuration.beans.specifications.SpecificationsConfig;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -30,6 +29,6 @@ public class PortsConfig {
     public EmployeeInputPort employeeInputPort() {
         return new EmployeeInputPort(adaptersConfig.postgresEmployeesAdapter(),
                 specificationsConfig.createNewEmployeeSpecificaions(),
-                specificationsConfig.updateEmployeeSpecificaions(), serverConfig.getTimeZone(), serverConfig.isDebug());
+                specificationsConfig.updateEmployeeSpecificaions(), serverConfig.getTimeZone(), serverConfig.isLogData());
     }
 }

@@ -17,7 +17,7 @@ public class PostgresEmployeeMapper {
     public Employee mapToDomainEntity(final @NonNull PostgresEmployee employee) {
         return new Employee(employee.getId().toString(), employee.getFullName(), employee.getPosition(),
                 employee.getEmail(), employee.getCurrencyCode(), employee.getSalary(), employee.getCreatedAt(),
-                employee.getModifiedAt());
+                employee.getUpdatedAt(), zoneId);
     }
 
     public PostgresEmployee mapToDbEntity(final @NonNull Employee employee) {

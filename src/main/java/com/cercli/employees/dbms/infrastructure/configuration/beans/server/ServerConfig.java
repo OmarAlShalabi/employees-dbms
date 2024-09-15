@@ -12,5 +12,5 @@ import org.springframework.context.annotation.Configuration;
 public class ServerConfig {
 
     private String timeZone;
-    private boolean isDebug;
+    private boolean logData;
 }

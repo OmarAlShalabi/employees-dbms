@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
@@ -14,6 +15,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "employee")
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 public class PostgresEmployee {
 
@@ -39,6 +41,6 @@ public class PostgresEmployee {
     @Column(name = "created_at", nullable = false, columnDefinition = "TIMESTAMPTZ")
     private ZonedDateTime createdAt;
 
-    @Column(name = "modified_at", nullable = false, columnDefinition = "TIMESTAMPTZ")
-    private ZonedDateTime modifiedAt;
+    @Column(name = "updated_at", nullable = false, columnDefinition = "TIMESTAMPTZ")
+    private ZonedDateTime updatedAt;
 }

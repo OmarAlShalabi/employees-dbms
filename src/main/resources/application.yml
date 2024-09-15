@@ -1,8 +1,8 @@
 server:
   port: 8082
   shutdown: graceful
-  time-zone: "US/Central"
-  is-debug: true
+  time-zone: "Africa/Cairo"
+  log-Data: true
 
 spring:
   application:
