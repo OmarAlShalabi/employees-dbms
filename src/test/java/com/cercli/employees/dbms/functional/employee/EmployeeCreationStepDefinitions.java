@@ -4,6 +4,7 @@ import com.cercli.employees.dbms.application.port.input.EmployeeInputPort;
 import com.cercli.employees.dbms.application.usecase.dto.CreateNewEmployeeCommand;
 import com.cercli.employees.dbms.application.usecase.dto.UpdateEmployeeCommand;
 import com.cercli.employees.dbms.domain.entity.Employee;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.testcontainers.shaded.org.awaitility.Awaitility;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -50,5 +52,24 @@ public class EmployeeCreationStepDefinitions {
         Assert.assertEquals(createCmd.getFullName(), employee.getFullName());
         Assert.assertEquals(updateCmd.getSalary().toString(), employee.getSalary().toString());
         Assert.assertNotEquals(employee.getCreatedAt().toString(), employee.getModifiedAt().toString());
+    }
+
+    @Given("There are \\({int}) employees in database already stored")
+    public void thereAreEmployeesInDatabaseAlreadyStored(int numOfEmployees) {
+        for (int i = 1; i <= numOfEmployees; i++) {
+            final CreateNewEmployeeCommand cmd = new CreateNewEmployeeCommand("test"+i,
+                    "test"+i+"@test.com", "test position", "USD", new BigDecimal(100));
+            port.createNewEmployee(cmd);
+        }
+    }
+
+    @When("I retrieve All Employees")
+    public void iRetrieveAllEmployees() {
+        final List<Employee> employees = port.getAllEmployees();
+        Assert.assertFalse(employees.isEmpty());
+    }
+
+    @Then("Their data is print on Console")
+    public void theirDataIsPrintOnConsole() {
     }
 }
