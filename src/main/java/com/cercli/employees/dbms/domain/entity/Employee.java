@@ -34,8 +34,8 @@ public class Employee implements DomainEntity {
         this.email = email;
         this.currencyCode = currencyCode;
         this.salary = salary;
-        this.createdAt = ZonedDateTime.of(createdAt.toLocalDateTime(), ZoneId.of(zoneId));
-        this.modifiedAt = ZonedDateTime.of(modifiedAt.toLocalDateTime(), ZoneId.of(zoneId));
+        this.createdAt = createdAt.withZoneSameInstant(ZoneId.of(zoneId));
+        this.modifiedAt = modifiedAt.withZoneSameInstant(ZoneId.of(zoneId));
     }
 
     public Employee(final @NonNull String id, final @NonNull String fullName, final @NonNull String position,
@@ -53,7 +53,7 @@ public class Employee implements DomainEntity {
 
     public Employee(final @NonNull String id, final @NonNull String fullName, final @NonNull String position,
                     final @NonNull String email, final @NonNull String currencyCode, final @NonNull BigDecimal salary,
-                    final @NonNull ZonedDateTime createdAt) {
+                    final @NonNull ZonedDateTime createdAt, final @NonNull String zoneId) {
         this.id = id;
         this.fullName = fullName;
         this.position = position;
@@ -61,7 +61,7 @@ public class Employee implements DomainEntity {
         this.currencyCode = currencyCode;
         this.salary = salary;
         this.createdAt = createdAt;
-        this.modifiedAt = ZonedDateTime.now(createdAt.getZone());
+        this.modifiedAt = ZonedDateTime.now(ZoneId.of(zoneId));
     }
 
     public Employee(final @NonNull String fullName, final @NonNull String position,
