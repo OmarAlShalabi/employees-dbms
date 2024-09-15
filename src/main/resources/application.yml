@@ -1,7 +1,7 @@
 server:
   port: 8082
   shutdown: graceful
-  time-zone: "Africa/Cairo"
+  time-zone: "Asia/Ho_Chi_Minh"
   log-Data: true
 
 spring:

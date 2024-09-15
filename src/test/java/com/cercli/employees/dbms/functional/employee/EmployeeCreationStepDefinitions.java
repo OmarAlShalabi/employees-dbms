@@ -25,7 +25,7 @@ public class EmployeeCreationStepDefinitions {
 
     @When("I want to create a new employee with the following Data.")
     public void i_want_to_create_a_new_employee_with_the_following_data(io.cucumber.datatable.DataTable dataTable) {
-        final Map<String, String> employeeData = dataTable.asMaps().get(0);
+        final Map<String, String> employeeData = dataTable.asMaps().getFirst();
         createCmd = new CreateNewEmployeeCommand(employeeData.get("fullName"),
                 employeeData.get("email"), employeeData.get("position"), employeeData.get("currencyCode"),
                 new BigDecimal(employeeData.get("salary")));
