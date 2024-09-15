@@ -1,7 +1,7 @@
 package com.cercli.employees.dbms.domain.specification.employee;
 
 import com.cercli.employees.dbms.domain.entity.Employee;
-import com.cercli.employees.dbms.domain.entity.Result;
+import com.cercli.employees.dbms.domain.specification.Result;
 import com.cercli.employees.dbms.domain.specification.Specification;
 import org.springframework.lang.NonNull;
 

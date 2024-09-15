@@ -5,7 +5,7 @@ import com.cercli.employees.dbms.application.usecase.EmployeeUseCase;
 import com.cercli.employees.dbms.application.usecase.dto.CreateNewEmployeeCommand;
 import com.cercli.employees.dbms.application.usecase.dto.UpdateEmployeeCommand;
 import com.cercli.employees.dbms.domain.entity.Employee;
-import com.cercli.employees.dbms.domain.entity.Result;
+import com.cercli.employees.dbms.domain.specification.Result;
 import com.cercli.employees.dbms.domain.exception.EmployeeCreationException;
 import com.cercli.employees.dbms.domain.exception.EmployeeNotFoundException;
 import com.cercli.employees.dbms.domain.specification.CompositeSpecification;

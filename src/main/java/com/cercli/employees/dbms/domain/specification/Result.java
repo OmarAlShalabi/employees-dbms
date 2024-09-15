@@ -1,5 +1,6 @@
-package com.cercli.employees.dbms.domain.entity;
+package com.cercli.employees.dbms.domain.specification;
 
+import com.cercli.employees.dbms.domain.entity.DomainEntity;
 import lombok.Getter;
 import org.springframework.lang.NonNull;
 
