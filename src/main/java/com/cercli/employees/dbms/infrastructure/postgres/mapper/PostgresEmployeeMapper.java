@@ -6,6 +6,12 @@ import org.springframework.lang.NonNull;
 
 public class PostgresEmployeeMapper {
 
+    private final String zoneId;
+
+    public PostgresEmployeeMapper(String zoneId) {
+        this.zoneId = zoneId;
+    }
+
     public Employee mapToDomainEntity(final @NonNull PostgresEmployee employee) {
         return null;
     }

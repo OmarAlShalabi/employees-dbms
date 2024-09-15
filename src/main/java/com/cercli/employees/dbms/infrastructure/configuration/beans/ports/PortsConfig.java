@@ -2,6 +2,7 @@ package com.cercli.employees.dbms.infrastructure.configuration.beans.ports;
 
 import com.cercli.employees.dbms.application.port.input.EmployeeInputPort;
 import com.cercli.employees.dbms.infrastructure.configuration.beans.adapters.AdaptersConfig;
+import com.cercli.employees.dbms.infrastructure.configuration.beans.server.ServerConfig;
 import com.cercli.employees.dbms.infrastructure.configuration.beans.specifications.SpecificationsConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -10,28 +11,25 @@ import org.springframework.context.annotation.Import;
 import org.springframework.lang.NonNull;
 
 @Configuration
-@Import({SpecificationsConfig.class, AdaptersConfig.class})
+@Import({SpecificationsConfig.class, AdaptersConfig.class, ServerConfig.class})
 public class PortsConfig {
 
     private final SpecificationsConfig specificationsConfig;
     private final AdaptersConfig adaptersConfig;
-
-    @Value("${server.time-zone}")
-    private String serverTimeZone;
-
-    @Value("${server.is-debug}")
-    private boolean isDebug;
+    private final ServerConfig serverConfig;
 
     public PortsConfig(final @NonNull SpecificationsConfig specificationsConfig,
-                       final @NonNull AdaptersConfig adaptersConfig) {
+                       final @NonNull AdaptersConfig adaptersConfig,
+                       final @NonNull ServerConfig serverConfig) {
         this.specificationsConfig = specificationsConfig;
         this.adaptersConfig = adaptersConfig;
+        this.serverConfig = serverConfig;
     }
 
     @Bean
     public EmployeeInputPort employeeInputPort() {
         return new EmployeeInputPort(adaptersConfig.postgresEmployeesAdapter(),
                 specificationsConfig.createNewEmployeeSpecificaions(),
-                specificationsConfig.updateEmployeeSpecificaions(), serverTimeZone, isDebug);
+                specificationsConfig.updateEmployeeSpecificaions(), serverConfig.getTimeZone(), serverConfig.isDebug());
     }
 }
