@@ -1,6 +1,9 @@
 package com.cercli.employees.dbms.infrastructure.configuration.beans.specifications;
 
 import com.cercli.employees.dbms.application.specification.employee.UniqueEmailSpecification;
+import com.cercli.employees.dbms.application.specification.leaveRequest.LeaveRequestTimeSpecification;
+import com.cercli.employees.dbms.application.specification.leaveRequest.LeaveRequestTypeSpecification;
+import com.cercli.employees.dbms.application.specification.leaveRequest.OverlappingRequestsSpecification;
 import com.cercli.employees.dbms.domain.entity.Employee;
 import com.cercli.employees.dbms.application.specification.CompositeSpecification;
 import com.cercli.employees.dbms.application.specification.Specification;
@@ -18,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
-@Import({SupportedCurrenciesConfig.class, AdaptersConfig.class})
+@Import({SupportedCurrenciesConfig.class, AdaptersConfig.class, LeaveRequestConfig.class})
 public class SpecificationsConfig {
 
     @Value("${specs.employee.max-full-name-length}")
@@ -26,11 +29,14 @@ public class SpecificationsConfig {
 
     private final SupportedCurrenciesConfig supportedCurrenciesConfig;
     private final AdaptersConfig adaptersConfig;
+    private final LeaveRequestConfig leaveRequestConfig;
 
     public SpecificationsConfig(final @NonNull SupportedCurrenciesConfig supportedCurrenciesConfig,
-                                final @NonNull AdaptersConfig adaptersConfig) {
+                                final @NonNull AdaptersConfig adaptersConfig,
+                                final @NonNull LeaveRequestConfig leaveRequestConfig) {
         this.supportedCurrenciesConfig = supportedCurrenciesConfig;
         this.adaptersConfig = adaptersConfig;
+        this.leaveRequestConfig = leaveRequestConfig;
     }
 
     @Bean
@@ -71,5 +77,20 @@ public class SpecificationsConfig {
     @Bean
     public Specification<Employee> supportedCurrencySpecification() {
         return new SupportedCurrencySpecification(supportedCurrenciesConfig.getSupportedCurrencies());
+    }
+
+    @Bean
+    public LeaveRequestTimeSpecification leaveRequestTimeSpecification() {
+        return new LeaveRequestTimeSpecification();
+    }
+
+    @Bean
+    public LeaveRequestTypeSpecification leaveRequestTypeSpecification() {
+        return new LeaveRequestTypeSpecification(leaveRequestConfig.getSupportedTypes());
+    }
+
+    @Bean
+    public OverlappingRequestsSpecification overlappingRequestsSpecification() {
+        return new OverlappingRequestsSpecification(leaveRequestConfig.getOverlappingTypes());
     }
 }

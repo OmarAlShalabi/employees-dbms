@@ -1,5 +1,6 @@
 package com.cercli.employees.dbms.infrastructure.postgres.entity;
 
+import com.cercli.employees.dbms.infrastructure.DatabaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -17,7 +18,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class PostgresEmployee {
+public class PostgresEmployee implements DatabaseEntity {
 
     @Id
     @Column(name = "id", nullable = false)

@@ -4,3 +4,11 @@ specs:
       - USD
   employee:
     max-full-name-length: 200
+  leave-request:
+    supported-types:
+      - "Sick Leave"
+      - "Annual Leave"
+      - "Work Remotely"
+    overlapping-types:
+      "Work Remotely":
+        - "Annual Leave"

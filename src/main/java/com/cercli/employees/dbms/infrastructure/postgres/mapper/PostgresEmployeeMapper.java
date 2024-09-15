@@ -1,16 +1,17 @@
 package com.cercli.employees.dbms.infrastructure.postgres.mapper;
 
 import com.cercli.employees.dbms.domain.entity.Employee;
+import com.cercli.employees.dbms.infrastructure.Mapper;
 import com.cercli.employees.dbms.infrastructure.postgres.entity.PostgresEmployee;
 import org.springframework.lang.NonNull;
 
 import java.util.UUID;
 
-public class PostgresEmployeeMapper {
+public class PostgresEmployeeMapper implements Mapper<Employee, PostgresEmployee> {
 
     private final String zoneId;
 
-    public PostgresEmployeeMapper(String zoneId) {
+    public PostgresEmployeeMapper(final @NonNull String zoneId) {
         this.zoneId = zoneId;
     }
 
