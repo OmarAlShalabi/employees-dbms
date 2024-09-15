@@ -35,7 +35,7 @@ public class Employee implements DomainEntity {
         this.currencyCode = currencyCode;
         this.salary = salary;
         this.createdAt = ZonedDateTime.of(createdAt.toLocalDateTime(), ZoneId.of(zoneId));
-        this.modifiedAt = ZonedDateTime.of(createdAt.toLocalDateTime(), ZoneId.of(zoneId));
+        this.modifiedAt = ZonedDateTime.of(modifiedAt.toLocalDateTime(), ZoneId.of(zoneId));
     }
 
     public Employee(final @NonNull String id, final @NonNull String fullName, final @NonNull String position,
