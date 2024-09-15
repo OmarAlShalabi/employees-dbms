@@ -1,8 +1,6 @@
 package com.cercli.employees.dbms.domain.entity;
 
 import com.fasterxml.uuid.Generators;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 import org.springframework.lang.NonNull;

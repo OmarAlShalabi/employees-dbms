@@ -7,6 +7,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
@@ -41,6 +42,7 @@ public class PostgresEmployee {
     @Column(name = "created_at", nullable = false, columnDefinition = "TIMESTAMPTZ")
     private ZonedDateTime createdAt;
 
+    @LastModifiedDate
     @Column(name = "updated_at", nullable = false, columnDefinition = "TIMESTAMPTZ")
     private ZonedDateTime updatedAt;
 }
