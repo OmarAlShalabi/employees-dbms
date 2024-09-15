@@ -10,6 +10,7 @@ import com.cercli.employees.dbms.application.specification.Specification;
 import com.cercli.employees.dbms.application.specification.employee.SupportedCurrencySpecification;
 import com.cercli.employees.dbms.application.specification.employee.EmailFormatSpecification;
 import com.cercli.employees.dbms.application.specification.employee.FullNameLengthSpecification;
+import com.cercli.employees.dbms.domain.entity.LeaveRequest;
 import com.cercli.employees.dbms.infrastructure.configuration.beans.adapters.AdaptersConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -92,5 +93,13 @@ public class SpecificationsConfig {
     @Bean
     public OverlappingRequestsSpecification overlappingRequestsSpecification() {
         return new OverlappingRequestsSpecification(leaveRequestConfig.getOverlappingTypes());
+    }
+
+    @Bean
+    public CompositeSpecification<LeaveRequest> createNewLeaveRequestSpecification() {
+        final List<Specification<LeaveRequest>> specifications = new ArrayList<>();
+        specifications.add(leaveRequestTimeSpecification());
+        specifications.add(leaveRequestTypeSpecification());
+        return new CompositeSpecification<>(specifications);
     }
 }

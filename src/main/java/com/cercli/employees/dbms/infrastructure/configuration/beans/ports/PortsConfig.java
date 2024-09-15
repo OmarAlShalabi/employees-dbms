@@ -1,6 +1,7 @@
 package com.cercli.employees.dbms.infrastructure.configuration.beans.ports;
 
 import com.cercli.employees.dbms.application.port.input.EmployeeInputPort;
+import com.cercli.employees.dbms.application.port.input.LeaveRequestInputPort;
 import com.cercli.employees.dbms.infrastructure.configuration.beans.adapters.AdaptersConfig;
 import com.cercli.employees.dbms.infrastructure.configuration.beans.server.ServerConfig;
 import com.cercli.employees.dbms.infrastructure.configuration.beans.specifications.SpecificationsConfig;
@@ -30,5 +31,12 @@ public class PortsConfig {
         return new EmployeeInputPort(adaptersConfig.postgresEmployeesAdapter(),
                 specificationsConfig.createNewEmployeeSpecifications(),
                 specificationsConfig.updateEmployeeSpecifications(), serverConfig.getTimeZone(), serverConfig.isLogData());
+    }
+
+    @Bean
+    public LeaveRequestInputPort leaveRequestInputPort() {
+        return new LeaveRequestInputPort(specificationsConfig.createNewLeaveRequestSpecification(),
+                specificationsConfig.overlappingRequestsSpecification(),
+                adaptersConfig.postgresTimeOffRequestAdapter(), serverConfig.isLogData());
     }
 }
