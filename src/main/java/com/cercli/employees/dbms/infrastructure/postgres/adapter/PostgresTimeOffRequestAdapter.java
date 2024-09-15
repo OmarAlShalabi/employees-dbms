@@ -43,6 +43,8 @@ public class PostgresTimeOffRequestAdapter implements LeaveRequestOutputPort {
 
     @Override
     public List<LeaveRequest> getOverlappingLeaveRequests(final @NonNull LeaveRequest leaveRequest) {
-        return List.of();
+        return repository.findOverlappingRequestsByEmployeeIdAndDates(UUID.fromString(leaveRequest.getEmployeeId()),
+                leaveRequest.getStartTime(), leaveRequest.getEndTime()).stream()
+                .map(mapper::mapToDomainEntity).collect(Collectors.toList());
     }
 }
