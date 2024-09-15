@@ -72,11 +72,9 @@ public class EmployeeInputPort implements EmployeeUseCase {
 
     @Override
     public Employee updateEmployeeById(final @NonNull UpdateEmployeeCommand cmd) {
-        if (!employeeOutputPort.doesEmployeeExist(cmd.getEmployeeId())) {
-            throw new EmployeeNotFoundException("no employee exists with id: " + cmd.getEmployeeId() );
-        }
+        final Employee employee = getEmployeeById(cmd.getEmployeeId());
         final Employee newEmp = new Employee(cmd.getEmployeeId(), cmd.getFullName(), cmd.getPosition(), cmd.getEmail(),
-                cmd.getCurrencyCode(), cmd.getSalary(), zoneId);
+                cmd.getCurrencyCode(), cmd.getSalary(), employee.getCreatedAt());
         final Result<Employee> validatedNewEmp = updateEmployeeSpec.isSatisfiedBy(newEmp);
         if (validatedNewEmp.isFailed()) {
             throw new EmployeeCreationException(validatedNewEmp.getErrorMessage());
