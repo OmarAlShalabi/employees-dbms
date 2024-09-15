@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS currency (
 CREATE TABLE IF NOT EXISTS employee (
     id uuid,
     fullName VARCHAR(200) NOT NULL,
-    email VARCHAR(256) NOT NULL,
+    email VARCHAR(256) NOT NULL UNIQUE,
     position VARCHAR(200) NOT NULL,
     salary DECIMAL NOT NULL,
     currency_code VARCHAR(5) NOT NULL,

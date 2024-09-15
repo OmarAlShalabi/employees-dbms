@@ -28,7 +28,7 @@ public class PortsConfig {
     @Bean
     public EmployeeInputPort employeeInputPort() {
         return new EmployeeInputPort(adaptersConfig.postgresEmployeesAdapter(),
-                specificationsConfig.createNewEmployeeSpecificaions(),
-                specificationsConfig.updateEmployeeSpecificaions(), serverConfig.getTimeZone(), serverConfig.isLogData());
+                specificationsConfig.createNewEmployeeSpecifications(),
+                specificationsConfig.updateEmployeeSpecifications(), serverConfig.getTimeZone(), serverConfig.isLogData());
     }
 }

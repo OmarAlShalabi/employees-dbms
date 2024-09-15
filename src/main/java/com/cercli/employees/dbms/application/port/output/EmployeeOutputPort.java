@@ -18,4 +18,6 @@ public interface EmployeeOutputPort {
     public Employee persistEmployee(final @NonNull Employee emp);
 
     public boolean doesEmployeeExist(final @NonNull String empId);
+
+    public boolean isEmailAlreadyUsedBySomeoneElse(final @NonNull String email, final @NonNull String empId);
 }

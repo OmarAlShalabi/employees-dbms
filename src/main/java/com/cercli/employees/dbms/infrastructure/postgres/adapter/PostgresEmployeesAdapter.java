@@ -24,7 +24,7 @@ public class PostgresEmployeesAdapter implements EmployeeOutputPort {
     }
 
     @Override
-    public Optional<Employee> fetchEmployeeById(String empId) {
+    public Optional<Employee> fetchEmployeeById(final @NonNull String empId) {
         final Optional<PostgresEmployee> optionalDbEntity = repository.findById(UUID.fromString(empId));
         return optionalDbEntity.map(mapper::mapToDomainEntity);
     }
@@ -39,14 +39,19 @@ public class PostgresEmployeesAdapter implements EmployeeOutputPort {
     }
 
     @Override
-    public Employee persistEmployee(Employee emp) {
+    public Employee persistEmployee(final @NonNull Employee emp) {
         final PostgresEmployee dbEntity = mapper.mapToDbEntity(emp);
         final PostgresEmployee savedEntity = repository.save(dbEntity);
         return mapper.mapToDomainEntity(savedEntity);
     }
 
     @Override
-    public boolean doesEmployeeExist(String empId) {
+    public boolean doesEmployeeExist(final @NonNull String empId) {
         return repository.countById(UUID.fromString(empId)) > 0;
+    }
+
+    @Override
+    public boolean isEmailAlreadyUsedBySomeoneElse(final @NonNull String email, final @NonNull String empId) {
+        return repository.countEmailsExludingId(email, UUID.fromString(empId)) > 0;
     }
 }
