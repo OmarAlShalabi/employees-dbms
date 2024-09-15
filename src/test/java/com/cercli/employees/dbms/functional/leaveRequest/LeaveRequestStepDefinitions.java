@@ -24,17 +24,24 @@ public class LeaveRequestStepDefinitions {
     private EmployeeInputPort employeeInputPort;
 
     private LeaveRequest newRequest;
+    private int daysDiff;
+    private String testEmpId;
 
-    @When("I create a new Leave Request With Type \\({string}) from current time to next week")
-    public void i_create_a_new_leave_request_with_type_from_current_time_to_next_week(final @NonNull String requestType) {
+    @When("I create a new Leave Request With Type \\({string}) from current time to next \\({int}) days")
+    public void i_create_a_new_leave_request_with_type_from_current_time_to_next_week(final @NonNull String requestType,
+                                                                                      final @NonNull int days) {
+        daysDiff = days;
+        if (testEmpId == null) {
+            testEmpId = createTestEmployeeAndReturnId();
+        }
         newRequest = leaveRequestInputPort.createNewLeaveRequest(new NewLeaveRequestCommand(requestType,
-                createTestEmployeeAndReturnId(), ZonedDateTime.now(), ZonedDateTime.now().plusDays(7)));
+                testEmpId, ZonedDateTime.now(), ZonedDateTime.now().plusDays(days)));
     }
 
     @Then("I should get new Leave Request With its Id.")
     public void i_should_get_new_leave_request_with_its_id() {
         Assert.assertTrue(newRequest.getRequestId() > 0);
-        Assert.assertEquals(7, ChronoUnit.DAYS.between(newRequest.getStartTime(), newRequest.getEndTime()));
+        Assert.assertEquals(daysDiff, ChronoUnit.DAYS.between(newRequest.getStartTime(), newRequest.getEndTime()));
     }
 
     private String createTestEmployeeAndReturnId() {
