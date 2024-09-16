@@ -12,6 +12,10 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+/**
+ *
+ * Class responsible for interacting with Postgres database to perform actions on Entities.
+ */
 public class PostgresEmployeesAdapter implements EmployeeOutputPort {
 
     private final PostgresEmployeeMapper mapper;

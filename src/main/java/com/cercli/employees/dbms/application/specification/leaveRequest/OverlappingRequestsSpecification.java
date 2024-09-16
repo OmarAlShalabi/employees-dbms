@@ -9,6 +9,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.BiFunction;
 
+/**
+ * Class that performs the following validation on a leave-request against overlapping requests:
+ * validate if it's possible to overlap the two requests based on business requirement.
+ */
 public class OverlappingRequestsSpecification implements BiFunction<LeaveRequest, List<LeaveRequest>, Result<LeaveRequest>> {
 
     private final Map<String, Set<String>> overlappingRequestTypes;
